@@ -74,7 +74,7 @@ Dự án này là một ứng dụng giải bài toán **8 Puzzle** sử dụng 
 ### 1. Chạy chương trình
 
 ```bash
-python main.py
+python python 23110274_huynhduynguyen_btt.py
 ```
 
 ### 2. Tương tác với giao diện
@@ -107,7 +107,7 @@ python main.py
 
 ## 🖼️ Ảnh minh họa
 
-> (Thêm ảnh chụp màn hình tại đây)
+
 
 ---
 
