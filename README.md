@@ -68,7 +68,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Mở rộng nút chưa được duyệt có chi phí đường đi g(n) thấp nhất từ nút gốc. Sử dụng hàng đợi ưu tiên.
     *   **Lời giải:** Đảm bảo tìm thấy lời giải có tổng chi phí thấp nhất.
     *   **Hình ảnh GIF minh họa UCS:**
+
        !['UCS'](GIFS/UCS.gif)
+       
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có, nếu chi phí mỗi bước > 0.
         *   **Tính tối ưu:** Có.
@@ -78,7 +80,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Kết hợp ưu điểm của DFS (ít tốn bộ nhớ) và BFS (tối ưu, đầy đủ). Thực hiện DFS với giới hạn độ sâu tăng dần (0, 1, 2,...).
     *   **Lời giải:** Tương tự BFS, tìm lời giải nông nhất.
     *   **Hình ảnh GIF minh họa IDDFS:**
+
         !['IDDFS'](GIFS/IDDFS.gif)
+
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có.
         *   **Tính tối ưu:** Có (nếu chi phí đồng nhất).
@@ -113,7 +117,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Mở rộng nút có tổng chi phí f(n) = g(n) + h(n) nhỏ nhất, trong đó g(n) là chi phí thực tế từ gốc đến n, và h(n) là chi phí heuristic ước lượng từ n đến đích.
     *   **Lời giải:** Đảm bảo tìm thấy lời giải tối ưu nếu hàm heuristic h(n) là *admissible* (không bao giờ đánh giá quá cao chi phí thực tế đến đích) và *consistent* (hoặc monotone).
     *   **Hình ảnh GIF minh họa A\*:**
-        `[Hình ảnh GIF của thuật toán A* đang giải 8-Puzzle]`
+
+         !['A'](GIFS/A.gif)
+
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có.
         *   **Tính tối ưu:** Có (với điều kiện heuristic).
@@ -123,7 +129,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Phiên bản của A\* sử dụng ít bộ nhớ hơn. Thực hiện một loạt các tìm kiếm theo chiều sâu. Mỗi lần lặp, ngưỡng cắt là giá trị f-cost nhỏ nhất đã vượt quá ngưỡng ở lần lặp trước.
     *   **Lời giải:** Tương tự A\*, tìm lời giải tối ưu với điều kiện heuristic.
     *   **Hình ảnh GIF minh họa IDA\*:**
-        `[Hình ảnh GIF của thuật toán IDA* đang giải 8-Puzzle]`
+
+         !['IDA'](GIFS/IDA.gif)
+
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có.
         *   **Tính tối ưu:** Có (với điều kiện heuristic).
