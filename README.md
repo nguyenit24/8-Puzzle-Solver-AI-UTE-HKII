@@ -41,7 +41,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Duyệt tất cả các nút ở độ sâu hiện tại trước khi chuyển sang các nút ở độ sâu tiếp theo. Sử dụng hàng đợi (Queue - FIFO).
     *   **Lời giải:** Đảm bảo tìm thấy lời giải nông nhất (tối ưu về số bước nếu chi phí mỗi bước là như nhau).
     *   **Hình ảnh GIF minh họa BFS:**
-        `[Hình ảnh GIF của thuật toán BFS đang giải 8-Puzzle]`
+    
+    ['BFS'](GIFS/BFS.gif)
+
     *   **Nhận xét:**
         *   **Tính đầy đủ (Complete):** Có, nếu không gian trạng thái hữu hạn.
         *   **Tính tối ưu (Optimal):** Có, nếu chi phí mỗi bước là đồng nhất.
@@ -52,7 +54,10 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Duyệt sâu nhất có thể dọc theo mỗi nhánh trước khi quay lui. Sử dụng ngăn xếp (Stack - LIFO) hoặc đệ quy.
     *   **Lời giải:** Tìm thấy một lời giải nhưng không đảm bảo là tối ưu.
     *   **Hình ảnh GIF minh họa DFS:**
-        `[Hình ảnh GIF của thuật toán DFS đang giải 8-Puzzle]`
+           
+    ['DFS'](GIFS/DFS.gif)
+
+
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Không, nếu không gian trạng thái có nhánh vô hạn và không có kiểm tra vòng lặp/giới hạn độ sâu. Có nếu không gian hữu hạn.
         *   **Tính tối ưu:** Không.
@@ -63,7 +68,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Mở rộng nút chưa được duyệt có chi phí đường đi g(n) thấp nhất từ nút gốc. Sử dụng hàng đợi ưu tiên.
     *   **Lời giải:** Đảm bảo tìm thấy lời giải có tổng chi phí thấp nhất.
     *   **Hình ảnh GIF minh họa UCS:**
-        `[Hình ảnh GIF của thuật toán UCS đang giải 8-Puzzle]`
+       ['UCS'](GIFS/UCS.gif)
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có, nếu chi phí mỗi bước > 0.
         *   **Tính tối ưu:** Có.
@@ -73,7 +78,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Kết hợp ưu điểm của DFS (ít tốn bộ nhớ) và BFS (tối ưu, đầy đủ). Thực hiện DFS với giới hạn độ sâu tăng dần (0, 1, 2,...).
     *   **Lời giải:** Tương tự BFS, tìm lời giải nông nhất.
     *   **Hình ảnh GIF minh họa IDDFS:**
-        `[Hình ảnh GIF của thuật toán IDDFS đang giải 8-Puzzle]`
+        ['IDDFS'](GIFS/IDDFS.gif)
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có.
         *   **Tính tối ưu:** Có (nếu chi phí đồng nhất).

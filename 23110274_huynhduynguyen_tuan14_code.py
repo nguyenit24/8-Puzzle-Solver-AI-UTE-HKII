@@ -1351,7 +1351,7 @@ def main():
     running = True
     solution = None
     step = 0
-    selected_algo = None
+    selected_algo = "Greedy"
     speed = 500
     dragging = False
     execution_time = 0
@@ -1503,6 +1503,8 @@ def main():
                                     print("Min-Conflicts: Solution found")
                                 else:
                                     print("Min-Conflicts: No solution found")
+                            elif selected_algo == "Greedy":
+                                solution = greedy(current_state)
                             else:
                                 print(f"Unknown algorithm: {selected_algo}")
                                 continue
