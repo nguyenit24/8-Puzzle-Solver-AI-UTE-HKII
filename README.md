@@ -42,7 +42,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Lời giải:** Đảm bảo tìm thấy lời giải nông nhất (tối ưu về số bước nếu chi phí mỗi bước là như nhau).
     *   **Hình ảnh GIF minh họa BFS:**
     
-    ['BFS'](GIFS/BFS.gif)
+    !['BFS'](GIFS/BFS.gif)
 
     *   **Nhận xét:**
         *   **Tính đầy đủ (Complete):** Có, nếu không gian trạng thái hữu hạn.
@@ -55,7 +55,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Lời giải:** Tìm thấy một lời giải nhưng không đảm bảo là tối ưu.
     *   **Hình ảnh GIF minh họa DFS:**
            
-    ['DFS'](GIFS/DFS.gif)
+    !['DFS'](GIFS/DFS.gif)
 
 
     *   **Nhận xét:**
@@ -68,7 +68,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Mở rộng nút chưa được duyệt có chi phí đường đi g(n) thấp nhất từ nút gốc. Sử dụng hàng đợi ưu tiên.
     *   **Lời giải:** Đảm bảo tìm thấy lời giải có tổng chi phí thấp nhất.
     *   **Hình ảnh GIF minh họa UCS:**
-       ['UCS'](GIFS/UCS.gif)
+       !['UCS'](GIFS/UCS.gif)
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có, nếu chi phí mỗi bước > 0.
         *   **Tính tối ưu:** Có.
@@ -78,7 +78,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Kết hợp ưu điểm của DFS (ít tốn bộ nhớ) và BFS (tối ưu, đầy đủ). Thực hiện DFS với giới hạn độ sâu tăng dần (0, 1, 2,...).
     *   **Lời giải:** Tương tự BFS, tìm lời giải nông nhất.
     *   **Hình ảnh GIF minh họa IDDFS:**
-        ['IDDFS'](GIFS/IDDFS.gif)
+        !['IDDFS'](GIFS/IDDFS.gif)
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Có.
         *   **Tính tối ưu:** Có (nếu chi phí đồng nhất).
