@@ -138,8 +138,7 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
         *   **Độ phức tạp thời gian:** Tương tự A\* nếu heuristic tốt, có thể duyệt lại nút.
         *   **Độ phức tạp không gian:** O(b*d), tốt như DFS.
 
-*   **Hình ảnh so sánh hiệu suất các thuật toán Informed Search:**
-    `[Biểu đồ/Bảng so sánh Greedy, A*, IDA* với các heuristic khác nhau]`
+
 *   **Nhận xét chung về Informed Search:**
     Sử dụng heuristic giúp cải thiện đáng kể hiệu quả tìm kiếm so với các phương pháp mù. Chất lượng của hàm heuristic rất quan trọng.
 
@@ -149,11 +148,17 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
 
 *Mô tả chung:* Các thuật toán này không xây dựng đường đi từ đầu đến cuối mà bắt đầu từ một trạng thái (thường là ngẫu nhiên hoặc trạng thái ban đầu) và cố gắng cải thiện nó dần dần bằng cách thực hiện các thay đổi cục bộ. Chúng thường chỉ quan tâm đến trạng thái hiện tại và các trạng thái lân cận, không lưu trữ lịch sử đường đi.
 *Solution là gì:* Mục tiêu là tìm được một trạng thái là trạng thái đích. Đường đi đến đó có thể được ghi lại nếu cần, nhưng không phải là trọng tâm của thuật toán.
+ *    **Hill Simple (Leo đồi đơn giản)**
+    *   **Hình ảnh GIF minh họa Hill Climbing:**
 
-*   **Hill Climbing (Leo đồi)**
+       !['Hill_Simple'](GIFS/Hill_Simple.gif)
+
+*   **Hill Climbing (Leo đồi dốc nhất)**
     *   **Mô tả (Steepest-Ascent):** Tại mỗi bước, di chuyển đến trạng thái lân cận "tốt nhất" (ví dụ: có giá trị heuristic thấp nhất đối với 8-Puzzle, nghĩa là gần đích hơn). Nếu không có lân cận nào tốt hơn, thuật toán dừng lại.
     *   **Hình ảnh GIF minh họa Hill Climbing:**
-        `[Hình ảnh GIF của thuật toán Hill Climbing đang giải 8-Puzzle]`
+
+          !['Hill'](GIFS/Hill.gif)
+
     *   **Nhận xét:**
         *   Đơn giản, nhanh và tốn ít bộ nhớ.
         *   Dễ bị kẹt ở **cực tiểu địa phương** (local optimum), **đỉnh phẳng** (plateau), hoặc **sườn núi** (ridge). Không đảm bảo tìm được nghiệm toàn cục (trạng thái đích).
@@ -161,29 +166,36 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
 *   **Stochastic Hill Climbing (Leo đồi ngẫu nhiên)**
     *   **Mô tả:** Thay vì chọn lân cận tốt nhất, thuật toán này chọn ngẫu nhiên một trong số các lân cận tốt hơn trạng thái hiện tại.
     *   **Hình ảnh GIF minh họa Stochastic Hill Climbing:**
-        `[Hình ảnh GIF của thuật toán Stochastic Hill Climbing]`
+
+     !['Hill Stock'](GIFS/Hill%20Stock.gif)
+
     *   **Nhận xét:** Có thể khám phá không gian tìm kiếm rộng hơn so với Steepest-Ascent Hill Climbing, nhưng vẫn có thể bị kẹt.
 
 *   **Simulated Annealing (Luyện kim mô phỏng)**
     *   **Mô tả:** Lấy cảm hứng từ quá trình luyện kim. Cho phép di chuyển đến các trạng thái "xấu hơn" (heuristic cao hơn) với một xác suất nhất định. Xác suất này giảm dần theo một tham số "nhiệt độ" (T). Ban đầu nhiệt độ cao, cho phép nhiều bước nhảy ngẫu nhiên để thoát khỏi cực tiểu địa phương. Khi nhiệt độ giảm, thuật toán trở nên "tham lam" hơn.
     *   **Hình ảnh GIF minh họa Simulated Annealing:**
-        `[Hình ảnh GIF của thuật toán Simulated Annealing]`
+
+    !['Simulated'](GIFS/Simulated.gif.gif)
+
     *   **Nhận xét:** Có khả năng thoát khỏi cực tiểu địa phương tốt hơn Hill Climbing. Hiệu quả phụ thuộc vào lịch trình giảm nhiệt độ và các tham số khác.
 
 *   **Beam Search (Tìm kiếm chùm)**
     *   **Mô tả:** Một biến thể của tìm kiếm theo chiều rộng. Tại mỗi bước, chỉ giữ lại k trạng thái "tốt nhất" (beam width) để mở rộng tiếp. Các trạng thái khác bị loại bỏ.
     *   **Hình ảnh GIF minh họa Beam Search:**
-        `[Hình ảnh GIF của thuật toán Beam Search]`
+    
+    !['Beam'](GIFS/Beam.gif)
+
     *   **Nhận xét:** Tiết kiệm bộ nhớ so với BFS. Nếu k quá nhỏ, có thể bỏ lỡ lời giải. Không đảm bảo tính đầy đủ hay tối ưu.
 
 *   **GA (Genetic Algorithm - Thuật toán di truyền)**
     *   **Mô tả:** Dựa trên các nguyên lý của tiến hóa và chọn lọc tự nhiên. Duy trì một "quần thể" (population) các trạng thái (cá thể - individuals). Mỗi cá thể được đánh giá bằng một "hàm thích nghi" (fitness function - thường dựa trên heuristic). Các cá thể tốt hơn có nhiều khả năng được chọn để "sinh sản" (tạo thế hệ mới) thông qua các toán tử "lai ghép" (crossover) và "đột biến" (mutation).
     *   **Hình ảnh GIF minh họa Genetic Algorithm:**
-        `[Hình ảnh GIF của thuật toán Genetic Algorithm]`
+
+    !['Genetic'](GIFS/genetic.gif)
+
     *   **Nhận xét:** Mạnh mẽ cho các bài toán tối ưu hóa phức tạp. Cần nhiều tham số để tinh chỉnh (kích thước quần thể, tỷ lệ lai ghép/đột biến,...). Có thể hội tụ chậm.
 
-*   **Hình ảnh so sánh hiệu suất các thuật toán Local Search:**
-    `[Biểu đồ/Bảng so sánh khả năng tìm nghiệm, chất lượng nghiệm, thời gian của Hill Climbing, Simulated Annealing, GA,...]`
+
 *   **Nhận xét chung về Local Search:**
     Hữu ích khi chỉ cần tìm một trạng thái nghiệm mà không nhất thiết cần đường đi tối ưu. Thường sử dụng ít bộ nhớ.
 
@@ -204,13 +216,17 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
 *   **Backtracking (Tìm kiếm quay lui)**
     *   **Mô tả:** Một thuật toán tìm kiếm theo chiều sâu để giải CSP. Gán giá trị cho các biến một cách tuần tự. Nếu một phép gán dẫn đến vi phạm ràng buộc hoặc không thể tiếp tục mà không vi phạm, thuật toán "quay lui" (backtrack) và thử một giá trị khác cho biến trước đó.
     *   **Hình ảnh GIF minh họa Backtracking (cho CSP):**
-        `[Hình ảnh GIF của thuật toán Backtracking giải một CSP đơn giản]`
+
+    !['backtrack'](GIFS/back.gif)
+
     *   **Nhận xét:** Đơn giản, đảm bảo tính đầy đủ. Có thể rất chậm nếu không có các cải tiến.
 
 *   **Backtracking with Forward Checking (Quay lui với kiểm tra tiến)**
     *   **Mô tả:** Một cải tiến của Backtracking. Khi một biến X được gán một giá trị, thuật toán kiểm tra các biến Y chưa được gán có ràng buộc với X. Các giá trị trong miền của Y mà không tương thích với phép gán hiện tại của X sẽ tạm thời bị loại bỏ. Nếu miền của một biến nào đó trở nên rỗng, phép gán hiện tại cho X là không hợp lệ, và thuật toán quay lui.
     *   **Hình ảnh GIF minh họa Backtracking with Forward Checking:**
-        `[Hình ảnh GIF của Backtracking with Forward Checking]`
+    
+    !['back_for'](GIFS/back_for.gif)
+
     *   **Nhận xét:** Thường hiệu quả hơn Backtracking cơ bản vì phát hiện sớm các nhánh không có lời giải.
 
 *   **Min-conflicts**
@@ -218,11 +234,12 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
         1.  Chọn ngẫu nhiên một biến đang vi phạm ràng buộc.
         2.  Gán cho biến đó giá trị từ miền của nó mà làm giảm thiểu số lượng vi phạm ràng buộc.
     *   **Hình ảnh GIF minh họa Min-conflicts (cho CSP):**
-        `[Hình ảnh GIF của thuật toán Min-conflicts]`
+
+    !['back_min'](GIFS/back_min.gif)
+
     *   **Nhận xét:** Thường rất hiệu quả cho các CSP lớn, đặc biệt khi có nhiều lời giải. Không đảm bảo tính đầy đủ (có thể bị kẹt).
 
-*   **Hình ảnh so sánh hiệu suất các thuật toán CSPs:**
-    `[Biểu đồ/Bảng so sánh hiệu suất của Backtracking, FC, Min-conflicts]`
+
 *   **Nhận xét chung về CSPs:**
     Cung cấp một khung hình mạnh mẽ để giải quyết các bài toán liên quan đến việc tìm các cấu hình thỏa mãn các điều kiện nhất định.
 
@@ -245,14 +262,14 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Một thuật toán học tăng cường không cần mô hình (model-free), off-policy. Nó học một hàm giá trị hành động Q(s, a), ước lượng phần thưởng kỳ vọng khi thực hiện hành động 'a' tại trạng thái 's' và sau đó tuân theo chính sách tối ưu. Cập nhật Q-value dựa trên phương trình Bellman.
         `Q(s, a) ← Q(s, a) + α [R + γ max_a' Q(s', a') - Q(s, a)]`
     *   **Hình ảnh GIF minh họa Q-Learning (quá trình học):**
-        `[Hình ảnh GIF minh họa bảng Q-value đang được cập nhật hoặc tác tử đang khám phá]`
+    
+    !['Q_Learning'](GIFS/Q_learning.gif)
+
     *   **Nhận xét:**
         *   Có thể hội tụ đến chính sách tối ưu nếu tất cả các cặp (trạng thái, hành động) được thử đủ nhiều.
         *   Cần cân bằng giữa **khám phá** (exploration - thử các hành động mới) và **khai thác** (exploitation - chọn hành động tốt nhất đã biết).
         *   Bảng Q-table có thể rất lớn đối với các bài toán có không gian trạng thái phức tạp.
 
-*   **Hình ảnh so sánh hiệu suất các thuật toán Học tăng cường:**
-    `[Biểu đồ thể hiện tốc độ hội tụ, phần thưởng tích lũy của Q-Learning]`
 *   **Nhận xét chung về Học tăng cường:**
     Một cách tiếp cận mạnh mẽ khi mô hình của môi trường không rõ ràng hoặc quá phức tạp. Quá trình học có thể đòi hỏi nhiều dữ liệu và thời gian tính toán.
 
@@ -266,24 +283,26 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Trong các môi trường này, một hành động có thể dẫn đến nhiều kết quả khác nhau, mỗi kết quả có một xác suất nhất định. Ví dụ, khi cố gắng di chuyển ô trống sang trái, có 90% khả năng nó di chuyển sang trái, nhưng 10% khả năng nó bị "trượt" và không di chuyển.
     *   **Solution là gì:** Một kế hoạch (plan) hoặc một chính sách có điều kiện (contingency plan) để xử lý các kết quả khác nhau và vẫn đạt được mục tiêu. Thường sử dụng AND-OR search.
     *   **Hình ảnh GIF minh họa (AND-OR Search):**
-        `[Hình ảnh GIF minh họa cây tìm kiếm AND-OR]`
+    
+    !['AND_OR'](GIFS/andor.gif)
+
     *   **Nhận xét:** Phức tạp hơn tìm kiếm trong môi trường xác định. Cần xem xét tất cả các kết quả có thể của một hành động.
 
 *   **Search with no observation (Belief-state search - Tìm kiếm trong không gian trạng thái niềm tin)**
     *   **Mô tả:** Tác tử không thể quan sát trực tiếp trạng thái hiện tại của môi trường. Thay vào đó, nó duy trì một "trạng thái niềm tin" (belief state), là một tập hợp các trạng thái vật lý mà môi trường có thể đang ở, thường đi kèm với xác suất của chúng. Hành động được thực hiện trên trạng thái niềm tin, và trạng thái niềm tin được cập nhật dựa trên mô hình chuyển đổi.
     *   **Solution là gì:** Một chuỗi các hành động dẫn đến một trạng thái niềm tin mà tất cả các trạng thái vật lý trong đó đều là trạng thái đích.
     *   **Hình ảnh GIF minh họa (Belief State Search - ví dụ BFS_Belief):**
-        `[Hình ảnh GIF minh họa quá trình tìm kiếm với trạng thái niềm tin, ví dụ hiển thị nhiều bảng 8-Puzzle cùng lúc]`
+    
+    !['BFS_Belief'](GIFS/BFS%20Belief.gif)
+
     *   **Nhận xét:** Không gian trạng thái niềm tin có thể rất lớn (tập lũy thừa của không gian trạng thái vật lý). Các thuật toán như BFS_Belief, DFS_Belief được triển khai trong dự án này thuộc loại này.
 
 *   **Searching with partial observation (Tìm kiếm với quan sát một phần)**
     *   **Mô tả:** Tác tử nhận được một số thông tin quan sát (percept) từ môi trường, nhưng thông tin này có thể nhiễu hoặc không đủ để xác định chính xác trạng thái hiện tại. Tác tử cần kết hợp thông tin từ hành động, mô hình chuyển đổi và quan sát để cập nhật trạng thái niềm tin của mình.
     *   **Hình ảnh GIF minh họa (Partial Observation Search):**
-        `[Hình ảnh GIF minh họa tác tử nhận quan sát và cập nhật niềm tin]`
+    
     *   **Nhận xét:** Mô hình hóa các tình huống thực tế hơn, nơi cảm biến không hoàn hảo.
 
-*   **Hình ảnh so sánh hiệu suất các thuật toán cho Môi trường phức tạp:**
-    `[So sánh hiệu suất của BFS_Belief, DFS_Belief, AND-OR Search nếu có dữ liệu]`
 *   **Nhận xét chung về thuật toán cho Môi trường phức tạp:**
     Các thuật toán này giải quyết các khía cạnh thách thức và thực tế hơn của các vấn đề Trí Tuệ Nhân Tạo, nơi thông tin không hoàn hảo là phổ biến.
 
@@ -310,12 +329,6 @@ Dự án "8 Puzzle Solver" đã thành công trong việc triển khai và minh 
 
 ---
 
-## 🖼️ Ảnh minh họa chung của ứng dụng
-
-`[Ảnh chụp màn hình giao diện chính của ứng dụng 8 Puzzle Solver]`
-`[Một vài ảnh chụp màn hình khác thể hiện các thuật toán đang chạy hoặc kết quả]`
-
----
 
 ## 👤 Tác giả
 
