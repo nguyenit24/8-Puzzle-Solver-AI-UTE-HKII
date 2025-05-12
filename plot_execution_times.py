@@ -1,11 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Đọc file CSV
+
 csv_file = "execution_times.csv"
 df = pd.read_csv(csv_file)
-
-# Biểu đồ đường: Thời gian thực thi mỗi lần chạy
 plt.figure(figsize=(10, 6))
 plt.plot(df.index, df['Execution_Time'], marker='o', linestyle='-', color='b')
 plt.title('Thời Gian Thực Thi Mỗi Lần Chạy')
@@ -17,8 +15,6 @@ for i, algo in enumerate(df['Algorithm']):
 plt.tight_layout()
 plt.savefig('time_line_chart.png')
 plt.close()
-
-# Biểu đồ cột: Thời gian thực thi trung bình mỗi thuật toán
 avg_times = df.groupby('Algorithm')['Execution_Time'].mean().sort_values()
 plt.figure(figsize=(12, 6))
 avg_times.plot(kind='bar', color='skyblue')
@@ -30,8 +26,6 @@ plt.grid(axis='y')
 plt.tight_layout()
 plt.savefig('time_bar_chart.png')
 plt.close()
-
-# Biểu đồ đường: Số bước mỗi lần chạy
 plt.figure(figsize=(10, 6))
 plt.plot(df.index, df['Steps'], marker='o', linestyle='-', color='g')
 plt.title('Số Bước Mỗi Lần Chạy')
@@ -44,7 +38,6 @@ plt.tight_layout()
 plt.savefig('steps_line_chart.png')
 plt.close()
 
-# Biểu đồ cột: Số bước trung bình mỗi thuật toán
 avg_steps = df.groupby('Algorithm')['Steps'].mean().sort_values()
 plt.figure(figsize=(12, 6))
 avg_steps.plot(kind='bar', color='lightgreen')

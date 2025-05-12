@@ -142,7 +142,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
         *   **Tính tối ưu:** Có (với điều kiện heuristic).
         *   **Độ phức tạp thời gian:** Tương tự A\* nếu heuristic tốt, có thể duyệt lại nút.
         *   **Độ phức tạp không gian:** O(b*d), tốt như DFS.
-
+    **Hình ảnh so sánh hiệu suất các thuật toán Informed Search:**
+    
+     !['Time'](GIFS/time_2.png)  |  !['SOBUOC'](GIFS/sobuoc_2.png)
 
 *   **Nhận xét chung về Informed Search:**
     Sử dụng heuristic giúp cải thiện đáng kể hiệu quả tìm kiếm so với các phương pháp mù. Chất lượng của hàm heuristic rất quan trọng.
@@ -315,6 +317,8 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
 
 ## 3. Kết luận
 
+
+
 Dự án "8 Puzzle Solver" đã thành công trong việc triển khai và minh họa một loạt các thuật toán tìm kiếm và giải quyết vấn đề từ cơ bản đến nâng cao. Qua đó, người dùng có thể:
 -   Trực quan hóa cách các thuật toán khác nhau tiếp cận và giải quyết bài toán 8-Puzzle.
 -   Có cái nhìn sơ bộ về sự khác biệt về hiệu suất, tính đầy đủ và tính tối ưu của từng phương pháp.
@@ -331,6 +335,8 @@ Dự án "8 Puzzle Solver" đã thành công trong việc triển khai và minh 
 -   Cải thiện giao diện người dùng (UI/UX) để thân thiện và cung cấp nhiều thông tin hơn.
 -   Thêm các công cụ phân tích hiệu suất chi tiết và trực quan hơn ngay trong ứng dụng.
 -   Lưu và tải các trạng thái bài toán, hoặc các Q-table đã huấn luyện.
+**Hình ảnh so sánh hiệu suất các thuật toán :**
+    !['Time'](GIFS/sobuoc.png)  |  !['SOBUOC'](GIFS/timecot.png.png) | !['SOBUOC2'](GIFS/timeduong.png)
 
 ---
 
