@@ -1,5 +1,5 @@
 # 8 Puzzle Solver - Trí Tuệ Nhân Tạo
-
+ !['Bìa'](GIFS/TTNT.png)
 ## 1. Mục tiêu
 
 Dự án này được xây dựng nhằm mục đích triển khai và minh họa hoạt động của các thuật toán Trí Tuệ Nhân Tạo (AI) khác nhau trong việc giải quyết bài toán 8-Puzzle cổ điển. Mục tiêu chính bao gồm:
