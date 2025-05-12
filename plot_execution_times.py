@@ -1,0 +1,60 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Đọc file CSV
+csv_file = "execution_times.csv"
+df = pd.read_csv(csv_file)
+
+# Biểu đồ đường: Thời gian thực thi mỗi lần chạy
+plt.figure(figsize=(10, 6))
+plt.plot(df.index, df['Execution_Time'], marker='o', linestyle='-', color='b')
+plt.title('Thời Gian Thực Thi Mỗi Lần Chạy')
+plt.xlabel('Lần Chạy')
+plt.ylabel('Thời Gian Thực Thi (giây)')
+plt.grid(True)
+for i, algo in enumerate(df['Algorithm']):
+    plt.text(i, df['Execution_Time'][i], algo, fontsize=8, ha='right')
+plt.tight_layout()
+plt.savefig('time_line_chart.png')
+plt.close()
+
+# Biểu đồ cột: Thời gian thực thi trung bình mỗi thuật toán
+avg_times = df.groupby('Algorithm')['Execution_Time'].mean().sort_values()
+plt.figure(figsize=(12, 6))
+avg_times.plot(kind='bar', color='skyblue')
+plt.title('Thời Gian Thực Thi Trung Bình Theo Thuật Toán')
+plt.xlabel('Thuật Toán')
+plt.ylabel('Thời Gian Thực Thi Trung Bình (giây)')
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y')
+plt.tight_layout()
+plt.savefig('time_bar_chart.png')
+plt.close()
+
+# Biểu đồ đường: Số bước mỗi lần chạy
+plt.figure(figsize=(10, 6))
+plt.plot(df.index, df['Steps'], marker='o', linestyle='-', color='g')
+plt.title('Số Bước Mỗi Lần Chạy')
+plt.xlabel('Lần Chạy')
+plt.ylabel('Số Bước')
+plt.grid(True)
+for i, algo in enumerate(df['Algorithm']):
+    plt.text(i, df['Steps'][i], algo, fontsize=8, ha='right')
+plt.tight_layout()
+plt.savefig('steps_line_chart.png')
+plt.close()
+
+# Biểu đồ cột: Số bước trung bình mỗi thuật toán
+avg_steps = df.groupby('Algorithm')['Steps'].mean().sort_values()
+plt.figure(figsize=(12, 6))
+avg_steps.plot(kind='bar', color='lightgreen')
+plt.title('Số Bước Trung Bình Theo Thuật Toán')
+plt.xlabel('Thuật Toán')
+plt.ylabel('Số Bước Trung Bình')
+plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y')
+plt.tight_layout()
+plt.savefig('steps_bar_chart.png')
+plt.close()
+
+print("Đã lưu các biểu đồ: 'time_line_chart.png', 'time_bar_chart.png', 'steps_line_chart.png', 'steps_bar_chart.png'")

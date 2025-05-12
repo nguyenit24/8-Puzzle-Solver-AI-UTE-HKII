@@ -1,4 +1,4 @@
-# 🧩 8 Puzzle Solver - Trí Tuệ Nhân Tạo
+# 8 Puzzle Solver - Trí Tuệ Nhân Tạo
 
 ## 1. Mục tiêu
 
@@ -90,7 +90,10 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
         *   **Độ phức tạp không gian:** O(b*d), tốt như DFS.
 
 *   **Hình ảnh so sánh hiệu suất các thuật toán Uninformed Search:**
-    `[Biểu đồ/Bảng so sánh thời gian chạy, số nút đã duyệt, bộ nhớ sử dụng của BFS, DFS, UCS, IDDFS trên một tập các bài toán 8-Puzzle]`
+    
+     !['Time'](GIFS/time_1.png)  |  !['SOBUOC'](GIFS/sobuoc_1.png)
+
+
 *   **Nhận xét chung về Uninformed Search:**
     Các thuật toán này là nền tảng cơ bản nhưng có thể không hiệu quả cho các không gian tìm kiếm lớn do không có "hướng dẫn" nào về phía mục tiêu.
 
@@ -107,7 +110,9 @@ Dưới đây là chi tiết về các nhóm thuật toán được sử dụng 
     *   **Mô tả:** Luôn chọn mở rộng nút có vẻ gần đích nhất theo hàm heuristic h(n). Không quan tâm đến chi phí đã đi g(n).
     *   **Lời giải:** Thường tìm ra lời giải nhanh nhưng không đảm bảo tối ưu.
     *   **Hình ảnh GIF minh họa Greedy Search:**
-        `[Hình ảnh GIF của thuật toán Greedy Search đang giải 8-Puzzle]`
+        
+           !['Greedy'](GIFS/Greedy.gif)
+
     *   **Nhận xét:**
         *   **Tính đầy đủ:** Không (có thể bị kẹt trong vòng lặp nếu không kiểm tra). Có trong không gian hữu hạn với kiểm tra nút đã thăm.
         *   **Tính tối ưu:** Không.

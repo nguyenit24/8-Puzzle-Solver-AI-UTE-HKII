@@ -750,8 +750,9 @@ def backtracking_fill_puzzle(state, index=0, user=None, path=None):
         if state == final_state:
             return path
         return None
+
     row = index // 3
-    col = index // 3
+    col = index % 3 #
     for num in range(1, 9):
         if not user[num]:
             user[num] = True
@@ -764,13 +765,16 @@ def backtracking_fill_puzzle(state, index=0, user=None, path=None):
                 return result
             user[num] = False
             path.pop()
+
     if index == 8:
         new_state = copy.deepcopy(state)
         new_state[row][col] = 0
         new_node = Node(new_state, path[-1] if path else None)
         path.append(new_node)
+    
         if new_state == final_state:
             return path
+  
         path.pop()
     return None
 import pickle
@@ -1071,6 +1075,8 @@ def draw_buttons(selected_algo):
         btn_text = font_small.render(text, True, WHITE)
         btn_rect = btn_text.get_rect(center=(rect[0] + rect[2] // 2, rect[1] + rect[3] // 2))
         screen.blit(btn_text, btn_rect)
+import csv
+import os
 def main():
     current_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]]
     running = True
@@ -1108,13 +1114,21 @@ def main():
         ("Q-Learning", BLUE, (20, 750, 120, 40)),
         ("AND_OR", BLUE, (150, 750, 120, 40)),
     ]
+
+    # Khởi tạo file CSV với tiêu đề nếu chưa tồn tại
+    csv_file = "execution_times.csv"
+    if not os.path.exists(csv_file):
+        with open(csv_file, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(["Algorithm", "Execution_Time", "Steps"])
+
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
-                for btn_text, _, (btn_x, btn_y, btn_w, btn_h) in buttons: 
+                for btn_text, _, (btn_x, btn_y, btn_w, btn_h) in buttons:
                     if btn_x <= x <= btn_x + btn_w and btn_y <= y <= btn_y + btn_h:
                         if btn_text == "Reset":
                             current_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]]
@@ -1131,11 +1145,13 @@ def main():
                             belief_states = None
                         elif btn_text == "Run":
                             if not selected_algo:
-                                print("Please select an algorithm before running!")
+                                print("Vui lòng chọn thuật toán trước khi chạy!")
                                 continue
-                            print(f"Running algorithm: {selected_algo}")
-                            start_time = time.time()
+                            print(f"Chạy thuật toán: {selected_algo}")
+                            start_time = time.perf_counter()
                             belief_states = None
+                            solution = None
+                            steps = 0
                             if selected_algo == "BFS":
                                 solution = bfs(current_state)
                             elif selected_algo == "DFS":
@@ -1164,9 +1180,9 @@ def main():
                                 current_state = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
                                 solution = backtracking_with_forward_checking(current_state)
                                 if solution:
-                                    print("Backtracking with Forward Checking: Puzzle solved")
+                                    print("Backtracking với Forward Checking: Đã giải được bài toán")
                                 else:
-                                    print("Backtracking with Forward Checking: No solution")
+                                    print("Backtracking với Forward Checking: Không tìm được lời giải")
                             elif selected_algo == "Partial_Obs":
                                 initial_belief = [
                                     [[2, 8, 3], [1, 6, 4], [7, 0, 5]],
@@ -1174,10 +1190,10 @@ def main():
                                 ]
                                 solution = search_with_partial_observation(initial_belief, actions, transitionModel, goalTest)
                                 if solution:
-                                    print("Search with Partial Observation: Solution found")
+                                    print("Tìm kiếm với Quan sát Một phần: Đã tìm được lời giải")
                                     belief_states = initial_belief
                                 else:
-                                    print("Search with Partial Observation: No solution")
+                                    print("Tìm kiếm với Quan sát Một phần: Không tìm được lời giải")
                                     solution = [initial_belief]
                             elif selected_algo == "BFS_Belief":
                                 initial_belief = [
@@ -1205,9 +1221,9 @@ def main():
                                 solution = solve_8_puzzle_with_AND_OR(initial_belief)
                                 belief_states = initial_belief
                                 if solution:
-                                    print("AND-OR Search: Solution found")
+                                    print("Tìm kiếm AND-OR: Đã tìm được lời giải")
                                 else:
-                                    print("AND-OR Search: No solution found")
+                                    print("Tìm kiếm AND-OR: Không tìm được lời giải")
                                     solution = [initial_belief]
                             elif selected_algo == "Q-Learning":
                                 solution = q_learning(current_state, episodes=1000, max_steps=10000)
@@ -1215,27 +1231,37 @@ def main():
                                 current_state = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
                                 solution = backtracking_fill_puzzle(current_state, 0, [False] * 9, [])
                                 if solution:
-                                    print("Backtracking: Puzzle filled successfully")
+                                    print("Backtracking: Đã điền bài toán thành công")
                                 else:
-                                    print("Backtracking: Failed to fill the puzzle")
+                                    print("Backtracking: Không điền được bài toán")
                             elif selected_algo == "Min_Conflicts":
                                 current_state = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
                                 solution = min_conflicts(current_state)
                                 if solution:
-                                    print("Min-Conflicts: Solution found")
+                                    print("Min-Conflicts: Đã tìm được lời giải")
                                 else:
-                                    print("Min-Conflicts: No solution found")
+                                    print("Min-Conflicts: Không tìm được lời giải")
                             elif selected_algo == "Greedy":
                                 solution = greedy(current_state)
                             else:
-                                print(f"Unknown algorithm: {selected_algo}")
+                                print(f"Thuật toán không xác định: {selected_algo}")
                                 continue
-                            end_time = time.time()
+                            end_time = time.perf_counter()
                             execution_time = end_time - start_time
+                            # Tính số bước
+                            if solution:
+                                steps = len(solution) - 1 if len(solution) > 1 else 0
+                            else:
+                                steps = 0
+                            # Ghi vào file CSV
+                            with open(csv_file, mode='a', newline='') as file:
+                                writer = csv.writer(file)
+                                writer.writerow([selected_algo, execution_time, steps])
+                            print(f"Đã lưu {selected_algo} - Thời gian: {execution_time:.4f}s, Số bước: {steps}")
                             step = 0
                         else:
                             selected_algo = btn_text
-                            print(f"Selected algorithm: {selected_algo}")
+                            print(f"Đã chọn thuật toán: {selected_algo}")
                         break
                     elif slider_x <= x <= slider_x + slider_width and slider_y <= y <= slider_y + slider_height:
                         dragging = True
@@ -1245,7 +1271,7 @@ def main():
                 x = max(slider_x, min(slider_x + slider_width, event.pos[0]))
                 speed = int((x - slider_x) / slider_width * 1000)
         if selected_algo in belief_algorithms and belief_states:
-            print(f"Displaying belief states at step {step}: {belief_states}")
+            print(f"Hiển thị belief states tại bước {step}: {belief_states}")
             draw_state(belief_states, is_belief=True)
         else:
             draw_state(current_state, is_belief=False)
@@ -1262,10 +1288,10 @@ def main():
         if solution and step < len(solution):
             if selected_algo in belief_algorithms:
                 belief_states = solution[step]
-                print(f"Step {step}: {belief_states}")
+                print(f"Bước {step}: {belief_states}")
             else:
                 current_state = solution[step].state
-                print(f"Step {step}: {current_state}")
+                print(f"Bước {step}: {current_state}")
             step += 1
             pygame.time.wait(speed)
         if solution:
@@ -1275,5 +1301,6 @@ def main():
         screen.blit(text_step, (WIDTH//2 - text_step.get_width()//2, HEIGHT - text_step.get_height() - 10))
         pygame.display.flip()
     pygame.quit()
+
 if __name__ == "__main__":
     main()
