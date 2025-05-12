@@ -336,7 +336,7 @@ Dự án "8 Puzzle Solver" đã thành công trong việc triển khai và minh 
 -   Thêm các công cụ phân tích hiệu suất chi tiết và trực quan hơn ngay trong ứng dụng.
 -   Lưu và tải các trạng thái bài toán, hoặc các Q-table đã huấn luyện.
 **Hình ảnh so sánh hiệu suất các thuật toán :**
-    !['Time'](GIFS/sobuoc.png)  |  !['SOBUOC'](GIFS/timecot.png.png) | !['SOBUOC2'](GIFS/timeduong.png)
+    !['Time'](GIFS/sobuoc.png)  |  !['SOBUOC'](GIFS/timecot.png) | !['SOBUOC2'](GIFS/timeduong.png)
 
 ---
 
