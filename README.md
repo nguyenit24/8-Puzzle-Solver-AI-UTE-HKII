@@ -1,5 +1,12 @@
+
 # 8 Puzzle Solver - Trí Tuệ Nhân Tạo
  !['Bìa'](GIFS/TTNT.png)
+
+## Sinh Viên Thực hiện
+
+-   **Họ và tên**: Huỳnh Duy Nguyễn
+-   **MSSV**: 23110274
+
 ## 1. Mục tiêu
 
 Dự án này được xây dựng nhằm mục đích triển khai và minh họa hoạt động của các thuật toán Trí Tuệ Nhân Tạo (AI) khác nhau trong việc giải quyết bài toán 8-Puzzle cổ điển. Mục tiêu chính bao gồm:
@@ -340,8 +347,3 @@ Dự án "8 Puzzle Solver" đã thành công trong việc triển khai và minh 
 
 ---
 
-
-## 👤 Tác giả
-
--   **Họ và tên**: Huỳnh Duy Nguyễn
--   **MSSV**: 23110274
