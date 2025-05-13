@@ -1,5 +1,5 @@
 ## Link github
-    https://github.com/nguyenit24/8-Puzzle-Solver-AI-UTE-HKII/blob/main/README.md
+    https://github.com/nguyenit24/8-Puzzle-Solver-AI-UTE-HKII
 # 8 Puzzle Solver - Trí Tuệ Nhân Tạo
  !['Bìa'](GIFS/TTNT.png)
 
